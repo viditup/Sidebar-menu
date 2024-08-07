@@ -1,19 +1,19 @@
-//Sidebar Menu Project
+#Sidebar Menu Project
 
 This project showcases a sidebar menu implemented using only HTML and CSS, without any JavaScript. The sidebar menu is responsive and includes various sections and social media links.
 
-//Features
+#Features
 *Responsive sidebar menu.
 *Toggle functionality for opening and closing the menu.
 *Integrated FontAwesome icons.
 *Background image for the main content area.
 *Smooth transitions and hover effects.
 
-//Technologies Used
+#Technologies Used
 HTML
 CSS (including FontAwesome for icons and Google Fonts for typography)
 
-//How to Use
+#How to Use
 *Clone the Repository
 git clone https://github.com/yourusername/sidebar-menu.git
 
@@ -23,7 +23,8 @@ cd sidebar-menu
 *Open index.html in Your Browser
 Simply open the index.html file in your preferred web browser to see the sidebar menu in action.
 
-// Code Explanation
+# Code Explanation
+
 # HTML
 The HTML file includes:
 
@@ -39,17 +40,18 @@ The CSS file includes:
 *Styles for the sidebar menu, including its visibility toggle and transitions.
 *Hover effects and animations for interactive elements.
 
-// Project Structure
+# Project Structure
 ├── index.html
 └── style.css
 
 *index.html: Contains the structure of the sidebar menu and main content.
 *style.css: Contains all the styling and transitions for the project.
 
-//Screenshots
+#Screenshots
+
 # Credits
 *Google Fonts
 *FontAwesome
 
-//License
+# License
 This project is licensed under the MIT License.
