@@ -1,0 +1,674 @@
+Q. Given a sorted array, arr[] consisting of N integers, write a program  to find the frequencies of each array element.
+ans. import java.util.*;
+
+public class FrequencyCounter {
+    public static void main(String[] args) {
+        int[] arr = {1, 1, 2, 2, 2, 3, 4, 5, 5, 5, 5}; // Example sorted array
+        findFrequencies(arr);
+    }
+
+    public static void findFrequencies(int[] arr) {
+        int n = arr.length;
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
+
+        // Counting frequencies of elements
+        for (int i = 0; i < n; i++) {
+            int key = arr[i];
+            frequencyMap.put(key, frequencyMap.getOrDefault(key, 0) + 1);
+        }
+
+        // Printing frequencies
+        System.out.println("Element\tFrequency");
+        for (Map.Entry<Integer, Integer> entry : frequencyMap.entrySet()) {
+            System.out.println(entry.getKey() + "\t" + entry.getValue());
+        }
+    }
+}
+
+Q. Implement singly linked list.
+ans. class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}
+
+public class SinglyLinkedList {
+    private ListNode head;
+
+    public void insert(int val) {
+        ListNode newNode = new ListNode(val);
+        if (head == null) {
+            head = newNode;
+        } else {
+            ListNode current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
+
+    public void display() {
+        ListNode current = head;
+        while (current != null) {
+            System.out.print(current.val + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+
+    public static void main(String[] args) {
+        SinglyLinkedList list = new SinglyLinkedList();
+        list.insert(1);
+        list.insert(2);
+        list.insert(3);
+        list.display(); // Output: 1 -> 2 -> 3 -> null
+    }
+}
+
+Q. Implement stack with singly linked list.
+ans. class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}
+
+public class Stack {
+    private ListNode top;
+
+    public Stack() {
+        this.top = null;
+    }
+
+    public void push(int val) {
+        ListNode newNode = new ListNode(val);
+        newNode.next = top;
+        top = newNode;
+    }
+
+    public int pop() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Stack is empty");
+        }
+        int val = top.val;
+        top = top.next;
+        return val;
+    }
+
+    public boolean isEmpty() {
+        return top == null;
+    }
+
+    public static void main(String[] args) {
+        Stack stack = new Stack();
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+
+        System.out.println("Pop: " + stack.pop()); // Output: 3
+        System.out.println("Pop: " + stack.pop()); // Output: 2
+        System.out.println("Pop: " + stack.pop()); // Output: 1
+        // System.out.println("Pop: " + stack.pop()); // Uncommenting this line will throw an IllegalStateException
+    }
+}
+
+Q. Implement queue with singly linked list. 
+ans. class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}
+
+public class Queue {
+    private ListNode front;
+    private ListNode rear;
+
+    public Queue() {
+        this.front = null;
+        this.rear = null;
+    }
+
+    public void enqueue(int val) {
+        ListNode newNode = new ListNode(val);
+        if (isEmpty()) {
+            front = newNode;
+            rear = newNode;
+        } else {
+            rear.next = newNode;
+            rear = newNode;
+        }
+    }
+
+    public int dequeue() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Queue is empty");
+        }
+        int val = front.val;
+        front = front.next;
+        if (front == null) {
+            rear = null; // Reset rear when the last element is dequeued
+        }
+        return val;
+    }
+
+    public int peek() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Queue is empty");
+        }
+        return front.val;
+    }
+
+    public boolean isEmpty() {
+        return front == null;
+    }
+
+    public void display() {
+        ListNode current = front;
+        while (current != null) {
+            System.out.print(current.val + " <- ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+
+    public static void main(String[] args) {
+        Queue queue = new Queue();
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        System.out.println("Queue contents:");
+        queue.display(); // Output: 1 <- 2 <- 3 <- null
+
+        System.out.println("Peek: " + queue.peek()); // Output: 1
+
+        System.out.println("Dequeue: " + queue.dequeue()); // Output: 1
+        System.out.println("Queue contents after dequeue:");
+        queue.display(); // Output: 2 <- 3 <- null
+    }
+}
+
+Q. Implement doubly linked list.
+ans. class ListNode {
+    int val;
+    ListNode prev;
+    ListNode next;
+
+    ListNode(int val) {
+        this.val = val;
+        this.prev = null;
+        this.next = null;
+    }
+}
+
+public class DoublyLinkedList {
+    private ListNode head;
+    private ListNode tail;
+
+    public DoublyLinkedList() {
+        this.head = null;
+        this.tail = null;
+    }
+
+    public void insert(int val) {
+        ListNode newNode = new ListNode(val);
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            tail.next = newNode;
+            newNode.prev = tail;
+            tail = newNode;
+        }
+    }
+
+    public void displayForward() {
+        ListNode current = head;
+        while (current != null) {
+            System.out.print(current.val + " <-> ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+
+    public void displayBackward() {
+        ListNode current = tail;
+        while (current != null) {
+            System.out.print(current.val + " <-> ");
+            current = current.prev;
+        }
+        System.out.println("null");
+    }
+
+    public static void main(String[] args) {
+        DoublyLinkedList list = new DoublyLinkedList();
+        list.insert(1);
+        list.insert(2);
+        list.insert(3);
+        System.out.println("Forward traversal:");
+        list.displayForward(); // Output: 1 <-> 2 <-> 3 <-> null
+        System.out.println("Backward traversal:");
+        list.displayBackward(); // Output: 3 <-> 2 <-> 1 <-> null
+    }
+}
+
+Q. Implement circular linked list.
+ans. class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode(int val) {
+        this.val = val;
+        this.next = null;
+    }
+}
+
+public class CircularLinkedList {
+    private ListNode head;
+
+    public CircularLinkedList() {
+        this.head = null;
+    }
+
+    // Method to insert a new node at the end of the list
+    public void insert(int val) {
+        ListNode newNode = new ListNode(val);
+        if (head == null) {
+            head = newNode;
+            newNode.next = head; // Point to itself for circularity
+        } else {
+            ListNode current = head;
+            while (current.next != head) {
+                current = current.next;
+            }
+            current.next = newNode;
+            newNode.next = head; // Point back to the head for circularity
+        }
+    }
+
+    // Method to display the contents of the list
+    public void display() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+        ListNode current = head;
+        do {
+            System.out.print(current.val + " -> ");
+            current = current.next;
+        } while (current != head);
+        System.out.println("head");
+    }
+
+    public static void main(String[] args) {
+        CircularLinkedList list = new CircularLinkedList();
+        list.insert(1);
+        list.insert(2);
+        list.insert(3);
+        list.display(); // Output: 1 -> 2 -> 3 -> head
+    }
+}
+
+Q. Implement circular queue with linked list.
+ans. class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}
+
+public class CircularQueue {
+    private ListNode front;
+    private ListNode rear;
+    private int size;
+    private int capacity;
+
+    public CircularQueue(int capacity) {
+        this.front = null;
+        this.rear = null;
+        this.size = 0;
+        this.capacity = capacity;
+    }
+
+    public void enqueue(int val) {
+        if (isFull()) {
+            throw new IllegalStateException("Queue is full");
+        }
+        ListNode newNode = new ListNode(val);
+        if (isEmpty()) {
+            front = newNode;
+        } else {
+            rear.next = newNode;
+        }
+        rear = newNode;
+        rear.next = front; // Make the last node point to the front for circularity
+        size++;
+    }
+
+    public int dequeue() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Queue is empty");
+        }
+        int val = front.val;
+        if (front == rear) {
+            front = null;
+            rear = null;
+        } else {
+            front = front.next;
+            rear.next = front; // Update rear's next pointer to maintain circularity
+        }
+        size--;
+        return val;
+    }
+
+    public int peek() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Queue is empty");
+        }
+        return front.val;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public boolean isFull() {
+        return size == capacity;
+    }
+
+    public void display() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty");
+            return;
+        }
+        ListNode current = front;
+        do {
+            System.out.print(current.val + " ");
+            current = current.next;
+        } while (current != front);
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        CircularQueue queue = new CircularQueue(3);
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        queue.display(); // Output: 1 2 3
+        System.out.println("Dequeue: " + queue.dequeue()); // Output: Dequeue: 1
+        queue.display(); // Output: 2 3
+    }
+}
+
+Q. What is the tower of Hanoi problem? Write a program to implement the Tower of Hanoi problem. Find the time and space complexity of the program.
+
+ans. The Tower of Hanoi problem is a classic problem in computer science and mathematics. It involves three rods and a number of disks of different sizes which can slide onto any rod. The puzzle starts with the disks stacked in increasing size on one rod, with the smallest disk at the top. The objective is to move the entire stack to another rod, following these rules:
+
+Only one disk can be moved at a time.
+Each move consists of taking the top disk from one stack and placing it on top of another stack.
+No disk may be placed on top of a smaller disk.
+The Tower of Hanoi problem can be solved recursively, where the problem of moving n disks from one rod to another can be reduced to moving n-1 disks to an intermediate rod, moving the largest disk to the target rod, and then moving the remaining n-1 disks to the target rod.
+
+Here's the Java program to implement the Tower of Hanoi problem:
+
+java
+Copy code
+public class TowerOfHanoi {
+    public static void main(String[] args) {
+        int n = 3; // Number of disks
+        char source = 'A', auxiliary = 'B', target = 'C';
+
+        System.out.println("Steps to solve Tower of Hanoi with " + n + " disks:");
+        solveHanoi(n, source, auxiliary, target);
+    }
+
+    public static void solveHanoi(int n, char source, char auxiliary, char target) {
+        if (n == 1) {
+            System.out.println("Move disk 1 from rod " + source + " to rod " + target);
+            return;
+        }
+        solveHanoi(n - 1, source, target, auxiliary);
+        System.out.println("Move disk " + n + " from rod " + source + " to rod " + target);
+        solveHanoi(n - 1, auxiliary, source, target);
+    }
+}
+Time Complexity:
+The time complexity of the Tower of Hanoi problem is 
+𝑂
+(
+2
+𝑛
+)
+O(2 
+n
+ ), where 
+𝑛
+n is the number of disks. This is because the number of moves required to solve the problem doubles with each additional disk.
+
+Space Complexity:
+The space complexity of the program is 
+𝑂
+(
+𝑛
+)
+O(n), where 
+𝑛
+n is the number of disks. This is due to the recursion stack used by the recursive function.
+
+Q. Write a program to delete middle element from stack.
+ans. import java.util.Stack;
+
+public class DeleteMiddleElementStack {
+    public static void main(String[] args) {
+        Stack<Integer> stack = new Stack<>();
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+        stack.push(5);
+
+        System.out.println("Original stack:");
+        System.out.println(stack);
+
+        deleteMiddleElement(stack);
+
+        System.out.println("Stack after deleting middle element:");
+        System.out.println(stack);
+    }
+
+    public static void deleteMiddleElement(Stack<Integer> stack) {
+        int middle = stack.size() / 2;
+        Stack<Integer> auxStack = new Stack<>();
+
+        // Push elements from original stack to auxStack until we reach the middle
+        while (middle > 0) {
+            auxStack.push(stack.pop());
+            middle--;
+        }
+
+        // Pop the middle element (we don't need it)
+        stack.pop();
+
+        // Pop elements from auxStack back to original stack
+        while (!auxStack.isEmpty()) {
+            stack.push(auxStack.pop());
+        }
+    }
+}
+
+Q. Write a program to remove consecutive duplicates from string.
+ans. public class RemoveConsecutiveDuplicates {
+    public static void main(String[] args) {
+        String input = "aaabbbcccdddeeefffggg";
+        String result = removeConsecutiveDuplicates(input);
+        System.out.println("String after removing consecutive duplicates: " + result);
+    }
+
+    public static String removeConsecutiveDuplicates(String str) {
+        if (str == null || str.length() <= 1) {
+            return str;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        char prevChar = str.charAt(0);
+        sb.append(prevChar);
+
+        for (int i = 1; i < str.length(); i++) {
+            char currentChar = str.charAt(i);
+            if (currentChar != prevChar) {
+                sb.append(currentChar);
+                prevChar = currentChar;
+            }
+        }
+
+        return sb.toString();
+    }
+}
+
+Q. Write a program to print 1 To N without loop
+ans. public class Print1ToN {
+    public static void main(String[] args) {
+        int N = 10;
+        print1ToN(N);
+    }
+
+    public static void print1ToN(int N) {
+        if (N <= 0) {
+            return;
+        }
+        print1ToN(N - 1); // Recursively call with N-1
+        System.out.print(N + " "); // Print N after all recursive calls are completed
+    }
+}
+
+Q. Write a program to find the first occurrence of repeating character in a given string.
+ans. import java.util.HashMap;
+import java.util.Map;
+
+public class FirstRepeatingCharacter {
+    public static void main(String[] args) {
+        String input = "programming";
+        char firstRepeatingChar = findFirstRepeatingChar(input);
+        if (firstRepeatingChar != '\0') {
+            System.out.println("First repeating character: " + firstRepeatingChar);
+        } else {
+            System.out.println("No repeating character found");
+        }
+    }
+
+    public static char findFirstRepeatingChar(String str) {
+        Map<Character, Integer> charCount = new HashMap<>();
+
+        for (int i = 0; i < str.length(); i++) {
+            char currentChar = str.charAt(i);
+            if (charCount.containsKey(currentChar)) {
+                return currentChar; // First repeating character found
+            }
+            charCount.put(currentChar, 1);
+        }
+
+        return '\0'; // No repeating character found
+    }
+}
+
+Q. Write a program to print all the LEADERS in the array. An element is a leader if it is greater than all the elements to its right side. And the rightmost element is always a leader.
+ans. public class LeadersInArray {
+    public static void main(String[] args) {
+        int[] array = {16, 17, 4, 3, 5, 2};
+        findLeaders(array);
+    }
+
+    public static void findLeaders(int[] array) {
+        int n = array.length;
+        int maxFromRight = array[n - 1];
+        System.out.println("Leaders in the array:");
+        System.out.print(maxFromRight + " "); // The rightmost element is always a leader
+
+        for (int i = n - 2; i >= 0; i--) {
+            if (array[i] > maxFromRight) {
+                System.out.print(array[i] + " ");
+                maxFromRight = array[i];
+            }
+        }
+    }
+}
+
+Q. Write a program to detect loop in linked list 
+ans. class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode(int val) {
+        this.val = val;
+        this.next = null;
+    }
+}
+
+public class DetectLoopInLinkedList {
+    public static void main(String[] args) {
+        // Creating a linked list with a loop
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        head.next.next.next.next = head.next; // Creating a loop
+
+        boolean hasLoop = detectLoop(head);
+        if (hasLoop) {
+            System.out.println("Linked list has a loop.");
+        } else {
+            System.out.println("Linked list does not have a loop.");
+        }
+    }
+
+    public static boolean detectLoop(ListNode head) {
+        if (head == null || head.next == null) {
+            return false; // No loop if list is empty or has only one node
+        }
+
+        ListNode slow = head;
+        ListNode fast = head;
+
+        // Floyd's Cycle Detection Algorithm
+        while (fast != null && fast.next != null) {
+            slow = slow.next; // Move slow pointer by one step
+            fast = fast.next.next; // Move fast pointer by two steps
+
+            // If slow and fast pointers meet, there is a loop
+            if (slow == fast) {
+                return true;
+            }
+        }
+
+        return false; // No loop found
+    }
+}
+
+Q. Write a program to Count Total Digits in a Number using recursion. You are given a number n. You need to find the count of digits in n.
+
+ans. public class CountDigitsRecursively {
+    public static void main(String[] args) {
+        int n = 12345;
+        int count = countDigits(n);
+        System.out.println("Total digits in " + n + ": " + count);
+    }
+
+    public static int countDigits(int n) {
+        if (n < 10) {
+            return 1; // Base case: single-digit number
+        }
+        return 1 + countDigits(n / 10); // Recursively count digits of n/10
+    }
+}
+
+Q. 
