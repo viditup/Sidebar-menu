@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/f9c4766d-6169-4419-94a4-38b19807559a)# Next Level Sidebar Menu
+# Next Level Sidebar Menu
 
 ## Overview
 The **Next Level Sidebar Menu** is a responsive sidebar navigation that provides a smooth user experience. It features a clean and modern design with the inclusion of a variety of icons for navigation, using **Font Awesome** for icons and **Poppins** font for stylish typography. The sidebar is toggleable, providing a seamless transition from a collapsed to an expanded view. This project is built using **HTML**, **CSS**, and **Font Awesome** icons, making it easy to integrate into various web projects.
@@ -77,7 +77,19 @@ To use this project locally, follow the steps below:
 
 ## Preview
 
-![Sidebar Menu Preview](./yuu.jpg)
+Here are additional previews of the **Next Level Sidebar Menu** project:
+
+### Sidebar Opened
+![Sidebar Open](.y1.png)
+*This is how the sidebar looks when expanded, with navigation items visible.*
+
+### Sidebar Closed
+![Sidebar Closed](.y2.png)
+*This is how the sidebar looks when collapsed, showing only the hamburger icon.*
+
+### Sidebar with Social Media Links
+![Sidebar with Social Media](.y3.png)
+*This shows the sidebar with social media icons at the bottom.*
 
 ---
 
@@ -97,3 +109,10 @@ This project is licensed under the MIT License.
 
 - **Font Awesome**: For providing the icon library used in the sidebar menu.
 - **Google Fonts**: For the Poppins font used throughout the project.
+
+### Notes:
+1. The images (`y1.png`, `y2.png`, `y3.png`) should be placed inside an `images` folder in your repository for the paths to work properly.
+2. The `README.md` now includes the images properly using the Markdown image syntax (`![Alt Text](image-path)`).
+3. Replace `your-username` in the Git clone command with your actual GitHub username.
+
+You can copy-paste this updated README into your project, and it will display the images as intended.
