@@ -77,19 +77,17 @@ To use this project locally, follow the steps below:
 
 ## Preview
 
-Here are additional previews of the **Next Level Sidebar Menu** project:
+Here are some previews of how the sidebar menu looks in different states:
 
-### Sidebar Opened
-![Sidebar Open](.y1.png)
-*This is how the sidebar looks when expanded, with navigation items visible.*
+### Sidebar Open
+![y1](https://github.com/user-attachments/assets/b3e468d9-c1ec-4692-82bd-ef6ab3aeb4ce)
 
 ### Sidebar Closed
-![Sidebar Closed](.y2.png)
-*This is how the sidebar looks when collapsed, showing only the hamburger icon.*
+![y3](https://github.com/user-attachments/assets/006b2c82-c615-4070-9e9b-02874cb45ce3)
 
-### Sidebar with Social Media Links
-![Sidebar with Social Media](.y3.png)
-*This shows the sidebar with social media icons at the bottom.*
+# Sidebar with Social Media Links
+![y2](https://github.com/user-attachments/assets/b6aef54d-292d-4a85-a95b-ddfa1dbcbda9)
+
 
 ---
 
@@ -109,10 +107,4 @@ This project is licensed under the MIT License.
 
 - **Font Awesome**: For providing the icon library used in the sidebar menu.
 - **Google Fonts**: For the Poppins font used throughout the project.
-
-### Notes:
-1. The images (`y1.png`, `y2.png`, `y3.png`) should be placed inside an `images` folder in your repository for the paths to work properly.
-2. The `README.md` now includes the images properly using the Markdown image syntax (`![Alt Text](image-path)`).
-3. Replace `your-username` in the Git clone command with your actual GitHub username.
-
-You can copy-paste this updated README into your project, and it will display the images as intended.
+```
